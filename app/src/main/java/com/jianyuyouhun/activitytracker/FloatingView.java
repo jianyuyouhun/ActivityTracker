@@ -22,6 +22,7 @@ import com.jianyuyouhun.inject.ViewInjector;
 import com.jianyuyouhun.inject.annotation.FindViewById;
 import com.jianyuyouhun.jmvplib.app.broadcast.LightBroadcast;
 import com.jianyuyouhun.jmvplib.app.broadcast.OnGlobalMsgReceiveListener;
+import com.jianyuyouhun.jmvplib.utils.Logger;
 
 /**
  *
@@ -208,6 +209,28 @@ public class FloatingView extends LinearLayout implements OnGlobalMsgReceiveList
     }
 
     Point preP, curP;
+    Point dispatchP, disCurP;
+    private boolean isInterceptTouchEvent = false;
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                dispatchP = new Point((int)ev.getRawX(), (int)ev.getRawY());
+                break;
+            case MotionEvent.ACTION_MOVE:
+                disCurP = new Point((int)ev.getRawX(), (int)ev.getRawY());
+                Logger.d("wy", "disCurP " + disCurP.x + "   "+ disCurP.y);
+                int range = (int) Math.sqrt(Math.pow(dispatchP.x - disCurP.x, 2) +  Math.pow(dispatchP.y - disCurP.y, 2));
+                if (range < 25) {
+                    isInterceptTouchEvent = false;
+                } else {
+                    isInterceptTouchEvent = true;
+                }
+                break;
+        }
+        return super.dispatchTouchEvent(ev);
+    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -221,6 +244,10 @@ public class FloatingView extends LinearLayout implements OnGlobalMsgReceiveList
 
             case MotionEvent.ACTION_MOVE:
                 curP = new Point((int)event.getRawX(), (int)event.getRawY());
+                if (preP == null) {
+                    preP = curP;
+                }
+                Logger.d("wy", "curP " + curP.x + "   "+ curP.y);
                 int dx = curP.x - preP.x,
                         dy = curP.y - preP.y;
 
@@ -250,5 +277,10 @@ public class FloatingView extends LinearLayout implements OnGlobalMsgReceiveList
                             className
             );
         }
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return isInterceptTouchEvent;
     }
 }
