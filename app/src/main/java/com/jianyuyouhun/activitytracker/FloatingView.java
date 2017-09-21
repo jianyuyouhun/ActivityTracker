@@ -119,8 +119,7 @@ public class FloatingView extends LinearLayout implements OnGlobalMsgReceiveList
         xAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                Integer currentX = (Integer) animation.getAnimatedValue();
-                layoutParams.x = currentX;
+                layoutParams.x = (Integer) animation.getAnimatedValue();
                 mWindowManager.updateViewLayout(FloatingView.this, layoutParams);
             }
         });
@@ -128,8 +127,7 @@ public class FloatingView extends LinearLayout implements OnGlobalMsgReceiveList
         yAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                Integer currentY = (Integer) animation.getAnimatedValue();
-                layoutParams.y = currentY;
+                layoutParams.y = (Integer) animation.getAnimatedValue();
                 mWindowManager.updateViewLayout(FloatingView.this, layoutParams);
             }
         });
@@ -170,8 +168,7 @@ public class FloatingView extends LinearLayout implements OnGlobalMsgReceiveList
         xAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                Integer currentX = (Integer) animation.getAnimatedValue();
-                layoutParams.x = currentX;
+                layoutParams.x = (Integer) animation.getAnimatedValue();
                 mWindowManager.updateViewLayout(FloatingView.this, layoutParams);
             }
         });
@@ -179,8 +176,7 @@ public class FloatingView extends LinearLayout implements OnGlobalMsgReceiveList
         yAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                Integer currentY = (Integer) animation.getAnimatedValue();
-                layoutParams.y = currentY;
+                layoutParams.y = (Integer) animation.getAnimatedValue();
                 mWindowManager.updateViewLayout(FloatingView.this, layoutParams);
             }
         });

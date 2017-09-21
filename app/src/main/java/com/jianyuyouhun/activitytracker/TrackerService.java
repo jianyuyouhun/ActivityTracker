@@ -91,7 +91,7 @@ public class TrackerService extends AccessibilityService {
     public void onDestroy() {
         super.onDestroy();
         LightBroadcast.getInstance().removeOnGlobalMsgReceiveListener(onGlobalMsgReceiveListener);
-        Log.d(TAG, "onDestroy");
+        Logger.d(TAG, "onDestroy");
     }
 
     public static class ActivityChangedEvent implements Serializable {
