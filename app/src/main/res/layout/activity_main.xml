@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.jianyuyouhun.activitytracker.MainActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="一个全局的悬浮窗, 显示栈顶 Activity 信息"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/open_finder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="开启悬浮窗"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"/>
+</LinearLayout>
