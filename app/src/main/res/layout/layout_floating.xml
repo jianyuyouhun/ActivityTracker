@@ -3,27 +3,28 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:background="#ddaaaaaa"
     android:gravity="center"
-    android:padding="8dp"
-    android:background="#ddaaaaaa">
+    android:orientation="horizontal">
 
     <LinearLayout
         android:id="@+id/package_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_package_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="packageName"
-            android:textSize="14sp"
-            android:textColor="#555555"/>
+            android:textColor="#555555"
+            android:textSize="14sp"/>
 
         <View
             android:layout_width="match_parent"
@@ -37,27 +38,31 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="ClassName"
-            android:textSize="18sp"
-            android:textColor="#333333"/>
+            android:textColor="#333333"
+            android:textSize="18sp"/>
 
     </LinearLayout>
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/iv_close"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:src="@drawable/close"
             android:tint="#555555"/>
+
         <TextView
             android:id="@+id/tv_toggle"
-            android:text="收"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:gravity="center"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="8dp"/>
+            android:text="收"/>
     </LinearLayout>
 </LinearLayout>

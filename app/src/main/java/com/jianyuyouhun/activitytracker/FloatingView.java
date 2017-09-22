@@ -222,7 +222,7 @@ public class FloatingView extends LinearLayout implements OnGlobalMsgReceiveList
                 disCurP = new Point((int)ev.getRawX(), (int)ev.getRawY());
                 Logger.d("wy", "disCurP " + disCurP.x + "   "+ disCurP.y);
                 int range = (int) Math.sqrt(Math.pow(dispatchP.x - disCurP.x, 2) +  Math.pow(dispatchP.y - disCurP.y, 2));
-                if (range < 25) {
+                if (range < 50) {
                     isInterceptTouchEvent = false;
                 } else {
                     isInterceptTouchEvent = true;
