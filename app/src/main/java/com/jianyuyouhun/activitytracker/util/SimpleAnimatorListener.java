@@ -1,4 +1,4 @@
-package com.jianyuyouhun.activitytracker;
+package com.jianyuyouhun.activitytracker.util;
 
 import android.animation.Animator;
 

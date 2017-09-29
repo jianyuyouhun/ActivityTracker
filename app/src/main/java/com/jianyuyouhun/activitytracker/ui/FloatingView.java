@@ -1,4 +1,4 @@
-package com.jianyuyouhun.activitytracker;
+package com.jianyuyouhun.activitytracker.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -18,11 +18,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jianyuyouhun.activitytracker.R;
+import com.jianyuyouhun.activitytracker.util.SimpleAnimatorListener;
+import com.jianyuyouhun.activitytracker.app.MsgWhat;
+import com.jianyuyouhun.activitytracker.app.TrackerService;
 import com.jianyuyouhun.inject.ViewInjector;
 import com.jianyuyouhun.inject.annotation.FindViewById;
 import com.jianyuyouhun.jmvplib.app.broadcast.LightBroadcast;
 import com.jianyuyouhun.jmvplib.app.broadcast.OnGlobalMsgReceiveListener;
-import com.jianyuyouhun.jmvplib.utils.Logger;
 
 /**
  *
@@ -220,7 +223,7 @@ public class FloatingView extends LinearLayout implements OnGlobalMsgReceiveList
                 break;
             case MotionEvent.ACTION_MOVE:
                 disCurP = new Point((int)ev.getRawX(), (int)ev.getRawY());
-                Logger.d("wy", "disCurP " + disCurP.x + "   "+ disCurP.y);
+//                Logger.d("wy", "disCurP " + disCurP.x + "   "+ disCurP.y);
                 int range = (int) Math.sqrt(Math.pow(dispatchP.x - disCurP.x, 2) +  Math.pow(dispatchP.y - disCurP.y, 2));
                 if (range < 50) {
                     isInterceptTouchEvent = false;
@@ -247,7 +250,7 @@ public class FloatingView extends LinearLayout implements OnGlobalMsgReceiveList
                 if (preP == null) {
                     preP = curP;
                 }
-                Logger.d("wy", "curP " + curP.x + "   "+ curP.y);
+//                Logger.d("wy", "curP " + curP.x + "   "+ curP.y);
                 int dx = curP.x - preP.x,
                         dy = curP.y - preP.y;
 

@@ -1,4 +1,4 @@
-package com.jianyuyouhun.activitytracker;
+package com.jianyuyouhun.activitytracker.app;
 
 /**
  * 消息what

@@ -1,4 +1,4 @@
-package com.jianyuyouhun.activitytracker;
+package com.jianyuyouhun.activitytracker.ui;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.jianyuyouhun.activitytracker.util.AccessibilityUtil;
+import com.jianyuyouhun.activitytracker.R;
+import com.jianyuyouhun.activitytracker.app.TrackerService;
 import com.jianyuyouhun.inject.annotation.FindViewById;
 import com.jianyuyouhun.jmvplib.app.BaseActivity;
 

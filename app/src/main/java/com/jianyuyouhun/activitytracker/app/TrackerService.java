@@ -1,4 +1,4 @@
-package com.jianyuyouhun.activitytracker;
+package com.jianyuyouhun.activitytracker.app;
 
 import android.accessibilityservice.AccessibilityService;
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 
+import com.jianyuyouhun.activitytracker.util.TrackerWindowManager;
 import com.jianyuyouhun.jmvplib.app.broadcast.LightBroadcast;
 import com.jianyuyouhun.jmvplib.app.broadcast.OnGlobalMsgReceiveListener;
 import com.jianyuyouhun.jmvplib.utils.Logger;

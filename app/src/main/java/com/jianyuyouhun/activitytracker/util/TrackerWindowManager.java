@@ -1,10 +1,12 @@
-package com.jianyuyouhun.activitytracker;
+package com.jianyuyouhun.activitytracker.util;
 
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.jianyuyouhun.activitytracker.ui.FloatingView;
 
 /**
  *

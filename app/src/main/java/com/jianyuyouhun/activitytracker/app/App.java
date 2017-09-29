@@ -1,5 +1,6 @@
-package com.jianyuyouhun.activitytracker;
+package com.jianyuyouhun.activitytracker.app;
 
+import com.jianyuyouhun.activitytracker.BuildConfig;
 import com.jianyuyouhun.jmvplib.app.JApp;
 import com.jianyuyouhun.jmvplib.mvp.BaseJModel;
 

@@ -1,4 +1,4 @@
-package com.jianyuyouhun.activitytracker;
+package com.jianyuyouhun.activitytracker.util;
 
 import android.content.Context;
 import android.content.Intent;
