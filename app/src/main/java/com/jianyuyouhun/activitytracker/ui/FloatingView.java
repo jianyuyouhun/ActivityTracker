@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jianyuyouhun.activitytracker.R;
+import com.jianyuyouhun.activitytracker.app.CacheKey;
 import com.jianyuyouhun.activitytracker.util.SimpleAnimatorListener;
 import com.jianyuyouhun.activitytracker.app.MsgWhat;
 import com.jianyuyouhun.activitytracker.app.TrackerService;
@@ -26,6 +27,9 @@ import com.jianyuyouhun.inject.ViewInjector;
 import com.jianyuyouhun.inject.annotation.FindViewById;
 import com.jianyuyouhun.jmvplib.app.broadcast.LightBroadcast;
 import com.jianyuyouhun.jmvplib.app.broadcast.OnGlobalMsgReceiveListener;
+import com.jianyuyouhun.jmvplib.mvp.model.CacheModel;
+import com.jianyuyouhun.jmvplib.utils.injecter.model.Model;
+import com.jianyuyouhun.jmvplib.utils.injecter.model.ModelInjector;
 
 /**
  *
@@ -44,6 +48,9 @@ public class FloatingView extends LinearLayout implements OnGlobalMsgReceiveList
     private TextView mToggleBtn;
     @FindViewById(R.id.package_layout)
     private LinearLayout mPackageLayout;
+
+    @Model
+    private CacheModel mCacheModel;
 
     private int expandX;
     private int expandY;
@@ -72,9 +79,18 @@ public class FloatingView extends LinearLayout implements OnGlobalMsgReceiveList
     }
 
     private void initView() {
+        ModelInjector.injectModel(this);
         inflate(mContext, R.layout.layout_floating, this);
         ViewInjector.inject(this, this);
         registerListener();
+        initPoint();
+    }
+
+    private void initPoint() {
+        expandX = mCacheModel.getInt(CacheKey.LAST_E_X);
+        expandY = mCacheModel.getInt(CacheKey.LAST_E_Y);
+        collapseX = mCacheModel.getInt(CacheKey.LAST_C_X);
+        collapseY = mCacheModel.getInt(CacheKey.LAST_C_Y);
     }
 
     private void registerListener() {
@@ -208,6 +224,10 @@ public class FloatingView extends LinearLayout implements OnGlobalMsgReceiveList
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+        mCacheModel.putInt(CacheKey.LAST_E_X, expandX);
+        mCacheModel.putInt(CacheKey.LAST_E_Y, expandY);
+        mCacheModel.putInt(CacheKey.LAST_C_X, collapseX);
+        mCacheModel.putInt(CacheKey.LAST_C_Y, collapseY);
         LightBroadcast.getInstance().removeOnGlobalMsgReceiveListener(this);
     }
 
@@ -260,6 +280,13 @@ public class FloatingView extends LinearLayout implements OnGlobalMsgReceiveList
                 }
                 layoutParams.y += dy;
                 mWindowManager.updateViewLayout(this, layoutParams);
+                if (isExpand) {
+                    expandX = layoutParams.x;
+                    expandY = layoutParams.y;
+                } else {
+                    collapseX = layoutParams.x;
+                    collapseY = layoutParams.y;
+                }
                 preP = curP;
                 break;
         }

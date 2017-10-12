@@ -6,7 +6,11 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.jianyuyouhun.activitytracker.app.CacheKey;
 import com.jianyuyouhun.activitytracker.ui.FloatingView;
+import com.jianyuyouhun.jmvplib.mvp.model.CacheModel;
+import com.jianyuyouhun.jmvplib.utils.injecter.model.Model;
+import com.jianyuyouhun.jmvplib.utils.injecter.model.ModelInjector;
 
 /**
  *
@@ -15,10 +19,13 @@ import com.jianyuyouhun.activitytracker.ui.FloatingView;
 public class TrackerWindowManager {
     private final Context mContext;
     private final WindowManager mWindowManager;
+    @Model
+    private CacheModel mCacheModel;
 
     public TrackerWindowManager(Context context) {
         mContext = context;
         mWindowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+        ModelInjector.injectModel(this);
     }
 
     private View mFloatingView;
@@ -41,6 +48,8 @@ public class TrackerWindowManager {
 
     public void addView() {
         if(mFloatingView == null){
+            LAYOUT_PARAMS.x = mCacheModel.getInt(CacheKey.LAST_E_X);
+            LAYOUT_PARAMS.y = mCacheModel.getInt(CacheKey.LAST_E_Y);
             mFloatingView = new FloatingView(mContext);
             mFloatingView.setLayoutParams(LAYOUT_PARAMS);
 
